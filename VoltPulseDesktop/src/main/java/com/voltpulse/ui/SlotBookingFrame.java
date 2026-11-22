@@ -91,7 +91,7 @@ public class SlotBookingFrame extends JFrame {
         billPanel.setLayout(null);
         billPanel.setBorder(BorderFactory.createLineBorder(new Color(51, 65, 85), 1));
 
-        JLabel lblBillHeader = new JLabel("COA Hardware & Peak-Pricing Calculation Monitor");
+        JLabel lblBillHeader = new JLabel("Peak-Pricing Calculation Monitor");
         lblBillHeader.setBounds(20, 12, 400, 20);
         lblBillHeader.setForeground(primaryColor);
         lblBillHeader.setFont(new Font("Segoe UI", Font.BOLD, 13));
