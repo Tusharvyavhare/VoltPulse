@@ -1,0 +1,4 @@
+Transaction_ID,Station_Name,User_Email,Energy_kWh,Amount_INR,Date
+TXN1001,VoltPulse Hub Alandi,nirmitisawant2007@gmail.com,25.0,393.75,2026-10-24
+TXN1002,Shivajinagar Fast Charge,nirmitisawant2007@gmail.com,18.5,291.38,2026-10-22
+TXN1003,Baner Express Plug,nirmitisawant2007@gmail.com,30.0,472.50,2026-10-18

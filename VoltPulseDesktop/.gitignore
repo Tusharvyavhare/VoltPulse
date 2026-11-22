@@ -1,0 +1,16 @@
+# Firebase credentials
+serviceAccountKey.json
+**/serviceAccountKey.json
+
+# Maven build files
+**/target/
+
+# Java compiled files
+*.class
+
+# VS Code settings
+.vscode/
+**/.vscode/
+
+# Environment variables
+.env
