@@ -104,7 +104,7 @@ public class SlotBookingFrame extends JFrame {
 
         mainPanel.add(billPanel);
 
-        JButton btnCalculate = new JButton("Calculate Bill (COA Engine)");
+        JButton btnCalculate = new JButton("Calculate Bill");
         btnCalculate.setBounds(30, 395, 350, 42);
         btnCalculate.setBackground(cardColor);
         btnCalculate.setForeground(primaryColor);

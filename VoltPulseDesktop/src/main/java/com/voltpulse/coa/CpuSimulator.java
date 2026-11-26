@@ -1,5 +1,5 @@
 package com.voltpulse.coa;
-
+//co1
 public class CpuSimulator {
     private long accumulator = 0;
     private long regR1 = 0; // Energy Consumed (kWh)

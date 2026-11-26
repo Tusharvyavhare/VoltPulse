@@ -19,22 +19,22 @@ import static org.lwjgl.stb.STBEasyFont.stb_easy_font_print;
 public abstract class OpenGLPanel extends JPanel {
 
     private final AWTGLCanvas canvas;
-
+    //configures opengl context settings
     protected OpenGLPanel() {
         setLayout(null);
         setOpaque(true);
 
         GLData data = new GLData();
         data.doubleBuffer = true;
-        data.depthSize = 24;
+        data.depthSize = 24;// double buffering to prevent screen flicker and a 24 bit depth
         canvas = new AWTGLCanvas(data) {
             @Override
             public void initGL() {
-                GL.createCapabilities();
+                GL.createCapabilities();// blinds LWJGL java opengl functions to active native driver
             }
 
             @Override
-            public void paintGL() {
+            public void paintGL() {//by defalut configures 2d orthogrtaphics projection, enables alpha blending for smooth transperancy clears the screen 
                 int width = Math.max(1, getFramebufferWidth());
                 int height = Math.max(1, getFramebufferHeight());
 
@@ -58,7 +58,7 @@ public abstract class OpenGLPanel extends JPanel {
         add(canvas);
     }
 
-    protected abstract void renderOpenGL(int width, int height);
+    protected abstract void renderOpenGL(int width, int height);// forces sublclasses to implement their custom drawing commands
 
     @Override
     public void addNotify() {
@@ -86,7 +86,7 @@ public abstract class OpenGLPanel extends JPanel {
                 Math.max(0, getHeight() - insets.top - insets.bottom));
     }
 
-    protected final void setDrawColor(Color color) {
+    protected final void setDrawColor(Color color) {//RGB or alpha  integrs into normalized OPengl floats
         glColor4f(
                 color.getRed() / 255.0f,
                 color.getGreen() / 255.0f,
@@ -94,7 +94,7 @@ public abstract class OpenGLPanel extends JPanel {
                 color.getAlpha() / 255.0f);
     }
 
-    protected final void fillRect(float x, float y, float width, float height, Color color) {
+    protected final void fillRect(float x, float y, float width, float height, Color color) {// draw solid filled rectangles for chart backgrounds and outlined rectangles for borders
         setDrawColor(color);
         glBegin(GL_QUADS);
         glVertex2f(x, y);
@@ -114,7 +114,8 @@ public abstract class OpenGLPanel extends JPanel {
         glVertex2f(x, y + height);
         glEnd();
     }
-
+    // rnders solid or segmented dashed lines by stepping along the vector lengthin increments
+   // line & polygon rasterization
     protected final void drawLine(
             float startX, float startY, float endX, float endY, Color color, float lineWidth) {
         setDrawColor(color);
@@ -154,7 +155,7 @@ public abstract class OpenGLPanel extends JPanel {
         }
         glEnd();
     }
-
+    //filled 2d circle using a GL_TRIANGLE_FAN
     protected final void fillCircle(float centerX, float centerY, float radius, Color color) {
         setDrawColor(color);
         glBegin(GL_TRIANGLE_FAN);
@@ -167,7 +168,7 @@ public abstract class OpenGLPanel extends JPanel {
         }
         glEnd();
     }
-
+    // Bresenhams circle , midpoint circle drwaning 
     protected final void fillRoundRect(
             float x, float y, float width, float height, float radius, Color color) {
         float cornerRadius = Math.min(radius, Math.min(width, height) / 2.0f);
@@ -212,7 +213,7 @@ public abstract class OpenGLPanel extends JPanel {
             glPopMatrix();
         }
     }
-
+    // switches the canvas from 2D mode into a full 3D perspective scne
     protected final void begin3D(int width, int height, float horizontalFov, float cameraDistance) {
         float aspect = (float) width / height;
         float nearPlane = 0.1f;
@@ -247,7 +248,7 @@ public abstract class OpenGLPanel extends JPanel {
 
         glTranslatef(0, 0, -cameraDistance);
     }
-
+    //this constructs a 3D rectangular prism centered by emitting 6 gl_quads faces,
     protected final void drawBox(
             float centerX,
             float centerY,
@@ -390,12 +391,12 @@ public abstract class OpenGLPanel extends JPanel {
         glEnd();
         glEnable(GL_LIGHTING);
     }
-
+    // 3D vehicle model thst isolates transformtions
     protected final void drawElectricCar(
             float centerX, float groundY, float centerZ, float headingDegrees, Color bodyColor) {
-        glPushMatrix();
-        glTranslatef(centerX, groundY, centerZ);
-        glRotatef(headingDegrees, 0, 1, 0);
+        glPushMatrix();// moves and rotate the car
+        glTranslatef(centerX, groundY, centerZ);//(transaltion)
+        glRotatef(headingDegrees, 0, 1, 0);//(rotation)
 
         drawBox(0, 0.34f, 0, 0.88f, 0.38f, 1.72f, bodyColor);
         drawBox(0, 0.64f, -0.12f, 0.76f, 0.32f, 0.94f, new Color(14, 116, 144));

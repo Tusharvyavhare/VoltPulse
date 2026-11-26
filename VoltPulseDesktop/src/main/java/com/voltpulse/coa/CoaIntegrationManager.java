@@ -1,7 +1,7 @@
 package com.voltpulse.coa;
 
 public class CoaIntegrationManager {
-    
+    //co 4
     public static void runCompleteCoaPipeline() {
         System.out.println("=== VoltPulse COA Integration Pipeline Started ===");
         
@@ -18,9 +18,9 @@ public class CoaIntegrationManager {
         // 3. CO3: Intensive Successive Addition & String Processing
         IntensiveProcessingModule intensive = new IntensiveProcessingModule();
         long intensiveResult = intensive.computeSuccessiveAddition(30, 15);
-        System.out.println("CO3 - Successive Addition Result: ₹" + intensiveResult);
+        System.out.println(" Result: ₹" + intensiveResult);
         intensive.processTransactionString("VP-TXN-99882");
         
-        System.out.println("=== COA Integration Successfully Demonstrated ===");
+        
     }
 }

@@ -2,10 +2,10 @@ package com.voltpulse.coa;
 
 public class IntensiveProcessingModule {
 
-    /* 
-     * CO3: Computationally Intensive Operation using Successive Addition
-     * (Simulating hardware multiplication via repeated additions)
-     */
+     
+     //CO3: Computationally Intensive Operation using Successive Addition
+     //(Simulating hardware multiplication via repeated additions)
+     
     public long computeSuccessiveAddition(long energyUnits, long costPerUnit) {
         long accumulator = 0;
         long counter = energyUnits;
@@ -18,10 +18,9 @@ public class IntensiveProcessingModule {
         return accumulator; // Equivalent to multiplication result
     }
 
-    /*
-     * CO3: 64-bit String / Data Processing Requirement
-     * Processing transaction log strings or EV station IDs at byte/word level
-     */
+    
+     // CO3: 64-bit String / Data Processing Requirement
+    //Processing transaction log strings or EV station IDs at byte/word level
     public void processTransactionString(String transactionId) {
         byte[] bytes = transactionId.getBytes();
         long checksum = 0;

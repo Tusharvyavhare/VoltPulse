@@ -68,7 +68,7 @@ public class StationFinderFrame extends JFrame {
         mainPanel.setBackground(bgColor);
 
         // Header
-        JLabel lblTitle = new JLabel("📍 Pune EV Charging Stations");
+        JLabel lblTitle = new JLabel(" Pune EV Charging Stations");
         lblTitle.setBounds(30, 20, 400, 30);
         lblTitle.setForeground(primaryColor);
         lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
